@@ -2,16 +2,22 @@ const { Model, DataTypes } = require('sequelize');
 
 const sequelize = require('../config/connection.js');
 
-const Product = require('./Product')
-
+// const Product = require('./Product')
+// console.log('from tag:', Product)
 class Tag extends Model {}
 
 Tag.init(
   {
     // define columns
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+      allowNull: false
+    },
     tag_name: {
       type: DataTypes.STRING,
-      allowNull: false
+      // allowNull: false
     }
   },
   {
@@ -22,9 +28,5 @@ Tag.init(
     modelName: 'tag',
   }
 );
-
-// Product belongs to many Tag models, and Tag belongs to many Product models.
-Product.belongsToMany(Tag)
-Tag.belongsToMany(Product)
 
 module.exports = Tag;

@@ -10,12 +10,18 @@ class ProductTag extends Model {}
 ProductTag.init(
   {
     // define columns
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+      allowNull: false
+    },
     product_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
         model: Product,
-        key: id
+        key: 'id'
       }
     },
     tag_id: {
@@ -23,8 +29,8 @@ ProductTag.init(
       allowNull: false,
       references: {
         model: Tag,
-        key: id
-      }
+        key: 'id'
+      }  
     },
   },
   {
@@ -35,5 +41,8 @@ ProductTag.init(
     modelName: 'product_tag',
   }
 );
+
+
+
 
 module.exports = ProductTag;
