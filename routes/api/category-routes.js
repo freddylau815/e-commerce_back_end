@@ -66,7 +66,9 @@ router.put('/:id', async (req, res) => {
       where:{
         id: category_id}})
 
-    res.send('Category Added')
+    res.send({
+      message: 'Category Updated!'
+    })
     
   }catch(err){
     console.log(err)

@@ -55,17 +55,18 @@ router.post('/', async (req, res) => {
 router.put('/:id', async (req, res) => {
   // update a tag's name by its `id` value
   const tag_id = req.params.id
-  
+
   try {
-    const tag = await Tag.findOne({
-      where: {
-        id: tag_id
-      },
-      include: Product
+    const tag_data = req.body
+
+    const tag = await Tag.update(tag_data,{
+      where:{
+        id: tag_id}})
+
+    res.send({
+      message: 'Tag Updated!'
     })
-
-    res.send(tag)
-
+    
   }catch(err){
     console.log(err)
   }
